@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using OhmsLaws.ViewModels;
+using OhmsLaws.Views;
 
 namespace OhmsLaws
 {
@@ -16,8 +18,10 @@ namespace OhmsLaws
                 });
 
 #if DEBUG
-		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
+            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<MainViewModel>();
 
             return builder.Build();
         }
