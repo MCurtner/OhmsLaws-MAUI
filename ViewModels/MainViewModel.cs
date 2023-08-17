@@ -69,9 +69,9 @@ public partial class MainViewModel : ObservableObject
     /// <param name="amps"></param>
     /// <param name="watts"></param>
     /// <returns>OhmsModel object.</returns>
-    private OhmsModel CalculateValuesFromInput(double? ohms, double? volts, double? amps, double? watts)
+    public OhmsModel CalculateValuesFromInput(double? ohms, double? volts, double? amps, double? watts)
     {
-        OhmsModel ohmsModel = new OhmsModel();
+        OhmsModel ohmsModel = new OhmsModel(ohms, volts, amps, watts);  
 
         // Volts
         if (ohms.HasValue && amps.HasValue)
