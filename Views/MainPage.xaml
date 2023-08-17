@@ -6,55 +6,74 @@
              x:DataType="viewmodel:MainViewModel"
              Title="Ohms Law Calculator"
              BackgroundColor="CadetBlue">
+
     <VerticalStackLayout HorizontalOptions="Center" 
                          Padding="10">
+        
+        <VerticalStackLayout HorizontalOptions="CenterAndExpand">
+            <HorizontalStackLayout Padding="10">
+                <Label Text="Ohms:  " 
+           TextColor="White"
+           VerticalOptions="Center"/>
+                <Entry Keyboard="Numeric" 
+           MinimumWidthRequest="100"
+           Placeholder="0.00" 
+           Text="{Binding OhmsText}"/>
+            </HorizontalStackLayout>
 
-        <HorizontalStackLayout Padding="10">
-            <Label Text="Ohms:  " 
-                   TextColor="White"
-                   VerticalOptions="Center"/>
-            <Entry Keyboard="Numeric" 
-                   Placeholder="0.00" 
-                   Text="{Binding OhmsText}"/>
-        </HorizontalStackLayout>
+            <HorizontalStackLayout Padding="10">
+                <Label Text="Volts:  " 
+           TextColor="White"
+           VerticalOptions="Center"/>
+                <Entry Keyboard="Numeric"
+           MinimumWidthRequest="100"
+           Placeholder="0.00" 
+           Text="{Binding VoltsText}"/>
+            </HorizontalStackLayout>
 
-        <HorizontalStackLayout Padding="10">
-            <Label Text="Volts:  " 
-                   TextColor="White"
-                   VerticalOptions="Center"/>
-            <Entry Keyboard="Numeric" 
-                   Placeholder="0.00" 
-                   Text="{Binding VoltsText}"/>
-        </HorizontalStackLayout>
+            <HorizontalStackLayout Padding="10">
+                <Label Text="Amps:  " 
+           TextColor="White"
+           VerticalOptions="Center"/>
+                <Entry Keyboard="Numeric" 
+           MinimumWidthRequest="100"
+           Placeholder="0.00" 
+           Text="{Binding AmpsText}"/>
+            </HorizontalStackLayout>
 
-        <HorizontalStackLayout Padding="10">
-            <Label Text="Amps:  " 
-                   TextColor="White"
-                   VerticalOptions="Center"/>
-            <Entry Keyboard="Numeric" 
-                   Placeholder="0.00" 
-                   Text="{Binding AmpsText}"/>
-        </HorizontalStackLayout>
+            <HorizontalStackLayout Padding="10">
+                <Label Text="Watts:  " 
+           TextColor="White"
+           VerticalOptions="Center"/>
+                <Entry Keyboard="Numeric" 
+           MinimumWidthRequest="100"
+           Placeholder="0.00" 
+           Text="{Binding WattsText}"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
 
-        <HorizontalStackLayout Padding="10">
-            <Label Text="Watts:  " 
-                   TextColor="White"
-                   VerticalOptions="Center"/>
-            <Entry Keyboard="Numeric" 
-                   Placeholder="0.00" 
-                   Text="{Binding WattsText}"/>
-        </HorizontalStackLayout>
+        <VerticalStackLayout >
+            <HorizontalStackLayout Spacing="10" 
+                       Padding="30" HorizontalOptions="Center">
+                <Button BackgroundColor="Blue"
+            Command="{Binding CalculateCommand}"
+            Text="Calculate" 
+            WidthRequest="100"/>
+                <Button BackgroundColor="Red"
+            Command="{Binding ClearCommand}"
+            Text="Clear" 
+            WidthRequest="100" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
 
-        <HorizontalStackLayout Spacing="10" 
-                               Padding="10">
-            <Button BackgroundColor="Blue"
-                    Command="{Binding CalculateCommand}"
-                    Text="Calculate" 
-                    WidthRequest="100"/>
-            <Button BackgroundColor="Red"
-                    Command="{Binding ClearCommand}"
-                    Text="Clear" 
-                    WidthRequest="100" />
-        </HorizontalStackLayout>
+        <VerticalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Fill"
+                                   Padding="0">
+                <Image Source="logo.png" 
+                       MaximumWidthRequest="350"
+                       Margin="0, 30"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+      
     </VerticalStackLayout>
 </ContentPage>

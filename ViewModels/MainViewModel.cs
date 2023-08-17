@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using OhmsLaws.Model;
+using System.ComponentModel;
 using System.Globalization;
 
 namespace OhmsLaws.ViewModels;
@@ -19,7 +20,20 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty]
     string wattsText;
 
+    [ObservableProperty]
+    [DefaultValue(3)]
+    int roundingDigit;
 
+
+    public MainViewModel() 
+    {
+        Clear();
+        roundingDigit = RoundingDigit;
+    }
+
+    /// <summary>
+    /// Clear all Entry field method.
+    /// </summary>
     [RelayCommand]
     void Clear()
     {
@@ -29,15 +43,20 @@ public partial class MainViewModel : ObservableObject
         WattsText = string.Empty;
     }
 
+    /// <summary>
+    /// Calculate method.
+    /// </summary>
     [RelayCommand]
     void Calculate()
-    {
-        OhmsModel ohmsModel =  CalculateValuesFromInput(GetNumberFromString(OhmsText),
+    { 
+        if (VerifyAtLeastTwoFieldsAreNotNull()) {
+            OhmsModel ohmsModel = CalculateValuesFromInput(GetNumberFromString(OhmsText),
             GetNumberFromString(VoltsText),
             GetNumberFromString(AmpsText),
             GetNumberFromString(WattsText));
 
-        SetEntryValues(ohmsModel);
+            SetEntryValues(ohmsModel);
+        }
     }
 
     /// <summary>
@@ -129,7 +148,7 @@ public partial class MainViewModel : ObservableObject
             ohmsModel.watts = (double)(Math.Pow((double)volts, 2.0) / ohms);
         }
 
-        return ohmsModel;
+        return RoundModelDecimals(ohmsModel);
     }
 
     /// <summary>
@@ -142,5 +161,53 @@ public partial class MainViewModel : ObservableObject
         VoltsText = ohmsModel.volts.ToString();
         AmpsText = ohmsModel.amps.ToString();
         WattsText = ohmsModel.watts.ToString();
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="ohmModel"></param>
+    /// <returns></returns>
+    private OhmsModel RoundModelDecimals(OhmsModel ohmModel)
+    {
+        ohmModel.ohms = Round((double)ohmModel.ohms);
+        ohmModel.volts = Round((double)ohmModel.volts);
+        ohmModel.amps = Round((double)ohmModel.amps);
+        ohmModel.watts = Round((double)ohmModel.watts);
+
+        return ohmModel;
+    }
+
+    /// <summary>
+    /// Round the provided double value to observed rounding value.
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns>Rounded double value.</returns>
+    private double Round(double value)
+    {
+        return Math.Round(value, RoundingDigit);
+    }
+
+    /// <summary>
+    /// Verify that at least Entry fields contain values.
+    /// </summary>
+    private bool VerifyAtLeastTwoFieldsAreNotNull()
+    {
+        if ((OhmsText.Length != 0 && VoltsText.Length != 0) || (OhmsText.Length != 0 && AmpsText.Length != 0) || (OhmsText.Length != 0 && WattsText.Length != 0))
+        {
+            return true;
+        }
+        else if ((VoltsText.Length != 0 && AmpsText.Length != 0) || (VoltsText.Length != 0 && WattsText.Length != 0))
+        {
+            return true;
+        }
+        else if (AmpsText.Length != 0 && WattsText.Length != 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
