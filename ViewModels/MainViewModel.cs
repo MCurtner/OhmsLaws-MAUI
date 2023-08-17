@@ -28,7 +28,7 @@ public partial class MainViewModel : ObservableObject
     public MainViewModel() 
     {
         Clear();
-        roundingDigit = RoundingDigit;
+        roundingDigit = 3;
     }
 
     /// <summary>

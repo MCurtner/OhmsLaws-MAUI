@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:viewmodel="clr-namespace:OhmsLaws.ViewModels"
              x:Class="OhmsLaws.Views.MainPage"
-             xmlns:viewmodel="clr-namespace:OhmsLaws.ViewModels"
              x:DataType="viewmodel:MainViewModel"
              Title="Ohms Law Calculator"
              BackgroundColor="CadetBlue">
@@ -12,70 +12,84 @@
         
         <VerticalStackLayout HorizontalOptions="CenterAndExpand">
             <HorizontalStackLayout Padding="10">
-                <Label Text="Ohms:  " 
+                <Label Margin="0, 0, 10, 0" 
+                       Text="Ohms:" 
                        TextColor="White"
                        VerticalOptions="Center"/>
-                <Entry Keyboard="Numeric" 
+                <Entry ClearButtonVisibility="WhileEditing" 
+                       Keyboard="Numeric" 
                        MinimumWidthRequest="100"
                        Placeholder="0.00" 
+                       WidthRequest="200"
                        Text="{Binding OhmsText}"/>
             </HorizontalStackLayout>
 
             <HorizontalStackLayout Padding="10">
-                <Label Text="Volts:  " 
+                <Label Margin="0, 0, 17, 0"
+                       Text="Volts:" 
                        TextColor="White"
                        VerticalOptions="Center"/>
-                <Entry Keyboard="Numeric"
+                <Entry ClearButtonVisibility="WhileEditing" 
+                       Keyboard="Numeric"
                        MinimumWidthRequest="100"
-                       Placeholder="0.00" 
-                       Text="{Binding VoltsText}"/>
+                       Placeholder="0.00"
+                       Text="{Binding VoltsText}"
+                       WidthRequest="200"/>
             </HorizontalStackLayout>
 
             <HorizontalStackLayout Padding="10">
-                <Label Text="Amps:  " 
+                <Label Margin="0, 0, 10, 0"
+                       Text="Amps:" 
                        TextColor="White"
                        VerticalOptions="Center"/>
-                <Entry Keyboard="Numeric" 
+                <Entry ClearButtonVisibility="WhileEditing" 
+                       Keyboard="Numeric" 
                        MinimumWidthRequest="100"
                        Placeholder="0.00" 
-                       Text="{Binding AmpsText}"/>
+                       Text="{Binding AmpsText}"
+                       WidthRequest="200"/>
             </HorizontalStackLayout>
 
             <HorizontalStackLayout Padding="10">
-                <Label Text="Watts:  " 
+                <Label Margin="0, 0, 10, 0"
+                       Text="Watts:" 
                        TextColor="White"
                        VerticalOptions="Center"/>
-                <Entry Keyboard="Numeric" 
+                <Entry ClearButtonVisibility="WhileEditing" 
+                       Keyboard="Numeric" 
                        MinimumWidthRequest="100"
                        Placeholder="0.00" 
-                       Text="{Binding WattsText}"/>
+                       Text="{Binding WattsText}"
+                       WidthRequest="200"/>
             </HorizontalStackLayout>
         </VerticalStackLayout>
 
         <VerticalStackLayout >
-            <HorizontalStackLayout Spacing="10" 
+            <HorizontalStackLayout HorizontalOptions="Center" 
                                    Padding="30" 
-                                   HorizontalOptions="Center">
+                                   Spacing="10">
                 <Button BackgroundColor="Blue"
                         Command="{Binding CalculateCommand}"
-                        Text="Calculate" 
+                        Text="Calculate"
+                        TextColor="White"
                         WidthRequest="100"/>
                 <Button BackgroundColor="Red"
                         Command="{Binding ClearCommand}"
                         Text="Clear" 
+                        TextColor="White"
                         WidthRequest="100" />
             </HorizontalStackLayout>
         </VerticalStackLayout>
 
         <VerticalStackLayout>
             <HorizontalStackLayout HorizontalOptions="Center" 
-                                   VerticalOptions="Fill"
-                                   Padding="0">
-                <Image Source="logo.png" 
-                       MaximumWidthRequest="350"
-                       Margin="0, 30"/>
+                                   Padding="0"
+                                   VerticalOptions="Fill">
+                <Image Margin="0, 30" 
+                       MaximumWidthRequest="350" 
+                       Source="logo.png"/>
             </HorizontalStackLayout>
         </VerticalStackLayout>
-    
+
     </VerticalStackLayout>
 </ContentPage>
