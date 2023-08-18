@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using OhmsLaws.ViewModels;
 using OhmsLaws.Views;
+using Plugin.MauiMTAdmob;
 
 namespace OhmsLaws
 {
@@ -23,6 +24,8 @@ namespace OhmsLaws
             
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<MainViewModel>();
+
+            builder.UseMauiMTAdmob();
 
             return builder.Build();
         }

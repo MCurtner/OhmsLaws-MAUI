@@ -1,95 +1,90 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-              xmlns:viewmodel="clr-namespace:OhmsLaws.ViewModels"
+             xmlns:viewmodel="clr-namespace:OhmsLaws.ViewModels"
+             xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMtAdmob"
              x:Class="OhmsLaws.Views.MainPage"
              x:DataType="viewmodel:MainViewModel"
              Title="Ohms Law Calculator"
              BackgroundColor="CadetBlue">
 
-    <VerticalStackLayout HorizontalOptions="Center" 
-                         Padding="10">
-        
-        <VerticalStackLayout HorizontalOptions="CenterAndExpand">
+    <VerticalStackLayout HorizontalOptions="CenterAndExpand" >
+        <VerticalStackLayout HorizontalOptions="Center" Padding="10">
             <HorizontalStackLayout Padding="10">
                 <Label Margin="0, 0, 10, 0" 
-                       Text="Ohms:" 
-                       TextColor="White"
-                       VerticalOptions="Center"/>
+                   Text="Ohms:" 
+                   TextColor="White"
+                   VerticalOptions="Center"/>
                 <Entry ClearButtonVisibility="WhileEditing" 
-                       Keyboard="Numeric" 
-                       MinimumWidthRequest="100"
-                       Placeholder="0.00" 
-                       WidthRequest="200"
-                       Text="{Binding OhmsText}"/>
+                   Keyboard="Numeric" 
+                   MinimumWidthRequest="100"
+                   Placeholder="0.00" 
+                   WidthRequest="200"
+                   Text="{Binding OhmsText}"/>
             </HorizontalStackLayout>
 
             <HorizontalStackLayout Padding="10">
                 <Label Margin="0, 0, 17, 0"
-                       Text="Volts:" 
-                       TextColor="White"
-                       VerticalOptions="Center"/>
+                   Text="Volts:" 
+                   TextColor="White"
+                   VerticalOptions="Center"/>
                 <Entry ClearButtonVisibility="WhileEditing" 
-                       Keyboard="Numeric"
-                       MinimumWidthRequest="100"
-                       Placeholder="0.00"
-                       Text="{Binding VoltsText}"
-                       WidthRequest="200"/>
+                   Keyboard="Numeric"
+                   MinimumWidthRequest="100"
+                   Placeholder="0.00"
+                   Text="{Binding VoltsText}"
+                   WidthRequest="200"/>
             </HorizontalStackLayout>
 
             <HorizontalStackLayout Padding="10">
                 <Label Margin="0, 0, 10, 0"
-                       Text="Amps:" 
-                       TextColor="White"
-                       VerticalOptions="Center"/>
+                   Text="Amps:" 
+                   TextColor="White"
+                   VerticalOptions="Center"/>
                 <Entry ClearButtonVisibility="WhileEditing" 
-                       Keyboard="Numeric" 
-                       MinimumWidthRequest="100"
-                       Placeholder="0.00" 
-                       Text="{Binding AmpsText}"
-                       WidthRequest="200"/>
+                   Keyboard="Numeric" 
+                   MinimumWidthRequest="100"
+                   Placeholder="0.00" 
+                   Text="{Binding AmpsText}"
+                   WidthRequest="200"/>
             </HorizontalStackLayout>
 
             <HorizontalStackLayout Padding="10">
                 <Label Margin="0, 0, 10, 0"
-                       Text="Watts:" 
-                       TextColor="White"
-                       VerticalOptions="Center"/>
+                   Text="Watts:" 
+                   TextColor="White"
+                   VerticalOptions="Center"/>
                 <Entry ClearButtonVisibility="WhileEditing" 
-                       Keyboard="Numeric" 
-                       MinimumWidthRequest="100"
-                       Placeholder="0.00" 
-                       Text="{Binding WattsText}"
-                       WidthRequest="200"/>
-            </HorizontalStackLayout>
-        </VerticalStackLayout>
-
-        <VerticalStackLayout >
-            <HorizontalStackLayout HorizontalOptions="Center" 
-                                   Padding="30" 
-                                   Spacing="10">
-                <Button BackgroundColor="Blue"
-                        Command="{Binding CalculateCommand}"
-                        Text="Calculate"
-                        TextColor="White"
-                        WidthRequest="100"/>
-                <Button BackgroundColor="Red"
-                        Command="{Binding ClearCommand}"
-                        Text="Clear" 
-                        TextColor="White"
-                        WidthRequest="100" />
+                   Keyboard="Numeric" 
+                   MinimumWidthRequest="100"
+                   Placeholder="0.00" 
+                   Text="{Binding WattsText}"
+                   WidthRequest="200"/>
             </HorizontalStackLayout>
         </VerticalStackLayout>
 
         <VerticalStackLayout>
-            <HorizontalStackLayout HorizontalOptions="Center" 
-                                   Padding="0"
-                                   VerticalOptions="Fill">
-                <Image Margin="0, 30" 
-                       MaximumWidthRequest="350" 
-                       Source="logo.png"/>
+            <HorizontalStackLayout HorizontalOptions="Center"  
+                               Spacing="10">
+                <Button BackgroundColor="Blue"
+                    Command="{Binding CalculateCommand}"
+                    Text="Calculate"
+                    TextColor="White"
+                    WidthRequest="100"/>
+                <Button BackgroundColor="Red"
+                    Command="{Binding ClearCommand}"
+                    Text="Clear" 
+                    TextColor="White"
+                    WidthRequest="100" />
             </HorizontalStackLayout>
-        </VerticalStackLayout>
 
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Image
+           MaximumWidthRequest="350" 
+           Source="logo.png"/>
+            </HorizontalStackLayout>
+
+            <controls:MTAdView AdsId="ca-app-pub-3940256099942544/2934735716"/>
+        </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
