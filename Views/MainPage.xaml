@@ -6,7 +6,7 @@
              x:Class="OhmsLaws.Views.MainPage"
              x:DataType="viewmodel:MainViewModel"
              Title="Ohms Law Calculator"
-             BackgroundColor="CadetBlue">
+             BackgroundImageSource="background.png">
 
     <VerticalStackLayout HorizontalOptions="CenterAndExpand" >
         <VerticalStackLayout HorizontalOptions="Center" Padding="10">
@@ -70,12 +70,26 @@
                     Command="{Binding CalculateCommand}"
                     Text="Calculate"
                     TextColor="White"
-                    WidthRequest="100"/>
+                    WidthRequest="100">
+                    <Button.Shadow>
+                        <Shadow Brush="Black" 
+                                Offset="20,20" 
+                                Radius="40"
+                                Opacity="0.8"/>
+                    </Button.Shadow>
+                </Button>
                 <Button BackgroundColor="Red"
                     Command="{Binding ClearCommand}"
                     Text="Clear" 
                     TextColor="White"
-                    WidthRequest="100" />
+                    WidthRequest="100">
+                    <Button.Shadow>
+                        <Shadow Brush="Black" 
+                                Offset="20,20" 
+                                Radius="40"
+                                Opacity="0.8"/>
+                    </Button.Shadow>
+                </Button>
             </HorizontalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="Center">

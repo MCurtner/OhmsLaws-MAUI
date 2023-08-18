@@ -53,6 +53,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\background.png" />
 	  <None Remove="Resources\Images\Logo%403x.png" />
 	  <None Remove="Resources\Images\logo.png" />
 	</ItemGroup>
